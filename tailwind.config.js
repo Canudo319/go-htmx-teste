@@ -1,0 +1,1 @@
+//Config para habilitar o intelisense do tailwind

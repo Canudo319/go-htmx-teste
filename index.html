@@ -7,13 +7,17 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src="https://unpkg.com/htmx.org@1.9.5" integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>{{ .PageTitle }}</h1>
-    <ul>
-        {{ range .Itens }}
-            <li>{{ . }}</li>
-        {{ end }}
-    </ul>
+    <div class="p-8 bg-cyan-700"></div>
+    <div class="w-1/2 m-auto bg-green-400 text-center">
+        <h1 class="font-bold text-lg">{{ .PageTitle }}</h1>
+        <ul class="bg-green-500">
+            {{ range .Itens }}
+                <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
 </body>
 </html>
