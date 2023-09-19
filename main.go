@@ -3,7 +3,9 @@ package main
 import (
 	"log"
 
+	"github.com/Canudo319/go-htmx-teste/pkg/routes"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/redirect"
 )
 
 func helloWorld(c *fiber.Ctx) error {
@@ -23,7 +25,14 @@ func helloWorld(c *fiber.Ctx) error {
 func main() {
 	app := fiber.New()
 
-	app.Get("/", helloWorld)
+	app.Use(redirect.New(redirect.Config{
+		Rules: map[string]string{
+			"/": "/home",
+		},
+		StatusCode: 301,
+	}))
+	app.Get("/home", helloWorld)
+	routes.NotFound(app)
 
 	log.Fatal(app.Listen("localhost:8080"))
 }
